@@ -6,9 +6,12 @@ import (
 )
 
 func main() {
-	e := new(echo.Echo)
+	// Create an Echo instance
+	e := echo.New()
+
+	// Register routes
 	routes.RegisterRoutes(e)
-	if err := e.Start(":8080"); err != nil {
-		e.Logger.Fatal(err)
-	}
+
+	// Start the server
+	e.Start(":8080")
 }

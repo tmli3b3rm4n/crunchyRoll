@@ -1,0 +1,19 @@
+version: "3"
+services :
+  example-service:
+    build:
+      context: ./pkg/crunchy/.
+    container_name: crunch-server
+    hostname: example-server
+    networks:
+      - mynet
+    environment:
+      ENV: ${ENV:-development}
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+
+networks:
+  mynet:
+    driver: bridge
